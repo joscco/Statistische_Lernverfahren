@@ -9,17 +9,31 @@ Wir hatten folgende Resultate erzielt:
 - Vorgehen gestaffelt nach intro/extro, anschließend für nächsten Faktor
 - Interaktion versucht mit einzubeziehen, killte Prozessor
 - Lemmatisierung mit Wortart ausgestattet: kein Erfolg
+- Auftreten von Wörtern in Dokumenten statt absolut begrenzt
 
 #### Matthias:
-- 
+- Naive Bayes in R angewendet
+- Entscheidungsbäume und Random Forests in R angewendet
+- ein einzelner Baum liefert schlechtere Ergebnisse als ein Wald
 
 #### Michael:
+- Naive Bayes in R angewendet
+- Random Forests in R angewendet (ca. 52 % Erfolg)
+- Support Vector Machine in R angewendet (ca. 52 % Erfolg)
+- Beim Stemming Infixe entfernen ( -zu-, bei -ge- nicht gut)
 
 #### Tanja:
+ - Naive Bayes erklären (R)
+ - Count of Imperative, Fragen hinzugefügt: ohne Erfolg
 
 #### Alex:
+ - Random Forests in R angewendet
 
 #### Jo:
+ - Naive Bayes und Random Forests in Python angewendet
+ - Vergleich Englisch/Deutsch, dazu deutsche Reviews von Holger mit DeepL teuer übersetzt
+ - Beides mit SpaCy lemmatisiert
+ - Auftreten von Wörtern in Dokumenten statt absolut begrenzt
 
 Im Vortrag sollen folgende Themen von den einzelnen Personen angesprochen werden. Dazu sollte man sich die tex-Datei 
 zum Grundvortrag anschauen und ein paar Folien zu seinem Thema erstellen.
