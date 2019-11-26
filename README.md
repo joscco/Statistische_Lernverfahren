@@ -1,8 +1,23 @@
-# Statistische_Lernverfahren
+# Statistische Lernverfahren
 Ordner zum Schwender-Seminar
 
 #### What to do?
-Als Inhalte für jeden hatten wir festgelegt:
+Wir hatten folgende Resultate erzielt:
+
+#### Till:
+
+#### Matthias:
+
+#### Michael:
+
+#### Tanja:
+
+#### Alex:
+
+#### Jo:
+
+Im Vortrag sollen folgende Themen von den einzelnen Personen angesprochen werden. Dazu sollte man sich die tex-Datei 
+zum Grundvortrag anschauen und ein paar Folien zu seinem Thema erstellen.
 
 <center>
   
