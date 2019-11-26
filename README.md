@@ -23,7 +23,6 @@ Wir hatten folgende Resultate erzielt:
 - Beim Stemming Infixe entfernen ( -zu-, bei -ge- nicht gut)
 
 #### Tanja:
- - Naive Bayes erklären (R)
  - Count of Imperative, Fragen hinzugefügt: ohne Erfolg
 
 #### Alex:
