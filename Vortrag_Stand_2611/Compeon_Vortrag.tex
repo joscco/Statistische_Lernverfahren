@@ -1,0 +1,216 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+% \usepackage[latin1]{inputenc} %  Alternativ unter Windows
+% \usepackage[T1]{fontenc}
+\usepackage{dsfont}
+\usepackage[ngerman]{babel}
+\usepackage[toc,page]{appendix}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+% einige Abkuerzungen, Funktionale fett mit eckigen Klammern, Mengen + Mengenfunktionen gestrichen, alle normalen Funktionen normale Klammern
+\newcommand{\C}{\mathbb{C}} % komplexe
+\newcommand{\K}{\mathbb{K}} % komplexe
+\newcommand{\R}{\mathbb{R}} % reelle
+\newcommand{\Q}{\mathbb{Q}} % rationale
+\newcommand{\Z}{\mathbb{Z}} % ganze
+\newcommand{\N}{\mathbb{N}} % natuerliche
+\newcommand{\E}{\mathbf{E}} % Erwartungswert
+\newcommand{\Var}{\mathbf{Var}} % Varianz
+\newcommand{\Prob}{\mathbf{P}} % Wahrscheinlichkeit
+\newcommand{\one}{\mathds{1}} % Charakteristische Funktion
+\newcommand{\filtration}{\mathbb{F}} % Filtration
+\newcommand{\F}{\mathcal{F}} %sigma-F
+\newcommand{\id}{\text{id}} % Identität
+\newcommand{\Zet}{Z}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\te}{\mathbf{t}}
+\renewcommand{\P}{\mathbf{P}}
+\renewcommand{\Q}{\mathbf{Q}}
+\newcommand{\p}{\mathbf{p}}
+\newcommand{\q}{\mathbf{q}}
+\newcommand{\supp}{\text{supp}}
+
+\newtheorem{Algorithmus}{Algorithmus}
+\useoutertheme{infolines}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}{}
+
+\newcommand{\CoEx}[2]{\E\left[\left. #1\,\right| #2\right]}
+
+\title{Seminar Statistische Lernverfahren}
+\subtitle{Klassifikation von Rezensionstypen}
+\author[T.G., A.K., M.L., T.N., M.H., J.S.]{Till Gräfenberg, Alexander Kohlscheen, Michael Lau, Tanja Niklas, Matthias Häußler, Jonathan Schmitz}
+\date{12. Dezember 2019}
+\begin{document}
+\begin{frame}
+\thispagestyle{empty}
+\begin{flushright}
+\includegraphics[scale=0.2]{compeon.png}
+\end{flushright}
+\titlepage
+\end{frame}
+%<-------------Folie 1--------->
+\begin{frame}
+\addtocounter{framenumber}{-1}
+\frametitle{Inhaltsverzeichnis}
+\begin{enumerate}\itemsep10pt
+\item Problemstellung
+\item Erstellen von Prädikatoren
+\item Analysemethoden
+	\begin{enumerate}
+	\item Naive Bayes
+	\item Entscheidungsbaum
+	\item Random Forest
+	\item weitere Anpassungen und Modelle
+	\end{enumerate}
+\end{enumerate}
+\end{frame}
+%<-------------Folie 1--------->
+\section{Problemstellung}
+\begin{frame}
+\frametitle{Problemstellung}
+\begin{itemize}\setlength\parskip{12pt}
+\item Ziel: Klassifizierung von Reviews in folgende Typen
+\begin{center}
+\begin{tabular}{c|c|c}
+Texttyp & introvertiert & extrovertiert \\
+\hline 
+emotional & stetig & initiativ\\
+rational & gewissenhaft & dominant
+\end{tabular}
+\end{center}
+\item Gegeben: 439 bereits klassifizierte Reviews
+\end{itemize}
+\end{frame}
+%<-------------Folie 2--------->
+\begin{frame}
+\frametitle{Schwierigkeiten}
+\begin{itemize}
+\item Keine eindeutige Klassifikation
+\begin{itemize}
+\item Auch für Menschen nicht eindeutig
+\item Teilweise sehr geringe Unterschiede zwischen den Typen
+\end{itemize}
+\item Geringe Zahl an Trainingsdaten
+\item Unbalanciertes Studiendesign
+\item Representativität
+\begin{itemize}
+\item Introvertierte Kunden schreiben weniger häufig Reviews
+\item Nur positive Bewertungen lagen vor
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%<-------------Folie 4--------->
+\section{Erstellen von Prädiktoren}
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\begin{itemize}\itemsep12pt
+\item Klassifikation sollte durch verwendete Wörter geschehen
+\item Zurückführung auf Grundwörter notwendig
+\item Benutzung verschiedener Packages in \texttt{R} bzw. \texttt{Python} ermöglichte verschiedene Verfahren.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Stemming}
+\begin{itemize}\itemsep12pt
+\item Durch Abschneiden von Prä-/In- und Suffixen und Ersetzen von Umlauten, Diphtongen etc. erzeugen von Wortstämmen.
+\item Eigene Implementierung nach Vorgabe von COMPEON in \texttt{R}
+\item Für Englische Sprache bereits vorgefertigte Tools z.B. 
+\begin{itemize}
+\item \texttt{porterstemmer} von \texttt{nltk} in Python
+\item \texttt{snowballstemmer} von \texttt{nltk} in Python
+\end{itemize}
+\end{itemize}
+Probleme:
+\begin{itemize}
+\item Unregelmäßigkeit von Verben im Deutschen
+\item Komposita
+\end{itemize} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Lemmatisierung}
+\begin{itemize}\itemsep12pt
+\item Alternative: Zurückführung auf grammatikalische Grundformen
+\item Erfordert vorgefertigte Packages z.B.
+\begin{itemize}
+\item \texttt{SpaCy} in Python
+\item \texttt{nltk} in Python
+\end{itemize}
+\item Diese lieferten zusätzlich Informationen über die Wortart
+\item Auch hier für Englische Sprache ausgereifter als die deutsche Alternative
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Filterung der Prädikatoren, weitere}
+\begin{itemize}\itemsep12pt
+\item Nach Erstellung der Grundwörter konnte gefiltert werden, welche Wörter häufig auftraten
+\item Denkbare Filtermethoden:
+\begin{itemize}
+\item Nur Wörter, die mind. $n$ Mal aufgetaucht sind 
+\item Nur Wörter, die in mind. $p\%$ der Reviews verwendet wurden
+\end{itemize} 
+\item Anschließend Erstellung einer binären Document-Term-Matrix, die kodiert, welche Grundwörter in welchen Reviews auftauchten
+\item Alternative: PCA um aussagekräftige \glqq Wörterachsen\grqq \,zu bestimmen. Kein sichtbarer Erfolg.
+\end{itemize}
+\end{frame}
+
+
+\section{Analysemathoden}
+%<-------------Folie 8--------->
+\begin{frame}
+\frametitle{Analysemethoden}
+\framesubtitle{Naive Bayes}
+\begin{itemize}\itemsep12pt
+\item bl
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resultate Naive Bayes, R, mind. 20 mal Wörter}
+\begin{tabular}{r|c|c|c|c|}
+ &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\hline
+Dominant & 14 & 2 & 8 & 1 \\
+Gewissenhaft & 0 & 0 & 0 & 0\\
+Initiativ & 4 & 11 & 28 & 17\\
+Stetig & 0 & 1 & 0 & 0
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Resultate Naive Bayes, Python, mind. in 1\% der Texte, englisch}
+\begin{tabular}{r|c|c|c|c|}
+ &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\hline
+Dominant & 13 & 0 & 4 & 1 \\
+Gewissenhaft & 4 & 3 & 5 & 2\\
+Initiativ & 12 & 3 & 16 & 5\\
+Stetig & 4 & 0 & 11 & 3
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resultate Naive Bayes, Python, mind. in 1\% der Texte, deutsch}
+\begin{tabular}{r|c|c|c|c|}
+ &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\hline
+Dominant & 16 & 0 & 2 & 0 \\
+Gewissenhaft & 2 & 5 & 5 & 2\\
+Initiativ & 13 & 4 & 16 & 3\\
+Stetig & 2 & 1 & 13 & 2
+\end{tabular}
+\end{frame}
+
+\end{document}
