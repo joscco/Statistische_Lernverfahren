@@ -1,12 +1,17 @@
 # Statistische Lernverfahren
 Ordner zum Schwender-Seminar
 
-#### What to do?
+## What to do?
 Wir hatten folgende Resultate erzielt:
 
 #### Till:
+- PCA-Verfahren angewendet: ohne Erfolg.
+- Vorgehen gestaffelt nach intro/extro, anschließend für nächsten Faktor
+- Interaktion versucht mit einzubeziehen, killte Prozessor
+- Lemmatisierung mit Wortart ausgestattet: kein Erfolg
 
 #### Matthias:
+- 
 
 #### Michael:
 
