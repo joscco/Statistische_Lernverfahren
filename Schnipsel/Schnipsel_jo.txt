@@ -1,0 +1,74 @@
+\begin{frame}
+\frametitle{Analysemethoden}
+\framesubtitle{Naive Bayes}
+\begin{itemize}\itemsep12pt
+\item Das Naive Bayes Verfahren fußt auf dem Bayes Theorem
+\[p(y|x) = \frac{p(x|y)p(y)}{p(x)}\]
+bzw. für unabhängige Prädiktoren $x_1,...,x_n$ als
+\[p(y|x_1,...,x_n)=\frac{p(x_1|y)\cdots p(x_n|y)p(y)}{p(x_1,...,x_n)}\propto p(x_1|y)\cdots p(x_n|y)p(y).\]
+\item Durch Schätzen von $p(y)$ und $p(x_i|y)$ (für die Reviewtypen $y$) durch die relativen Häufigkeiten, können wir dann Klassifikationen durchführen als
+\[\hat{y}=\text{argmax}_y\,p(y)\prod_{i=1}^np(x_i|y).\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Analysemethoden}
+\framesubtitle{Naive Bayes}
+\begin{itemize}\itemsep12pt
+\item Durchführung war in \texttt{R} mit dem Package \texttt{karet}, über \texttt{Python} mit \texttt{sklearn} möglich. Mit letzterem haben wir jeweils die deutschen und englischen Reviews klassifiziert.
+\item Dieses Vorgehen zeigte nur wenig bessere Ergebnisse als eine einheitliche Zuweisung.
+\end{itemize}
+\begin{center}
+(Bester) Naive Bayes, \texttt{R}, Wortaufkommen $> 20$\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
+\hline
+Dominant 		& 14		& 2 			& 8 		& 1 		& 0,488 	& 0,412 	& 0,778 	& 0,538\\
+Gewissenhaft 	& 0 		& 0 			& 0 		& 0 		& 			& n.d. 		& 0 	& n.d.\\
+Initiativ 		& 4 		& 11			& 28		& 17		& 			& 0,467		& 0,778 	& 0,583\\
+Stetig 			& 0 		& 1 			& 0 		& 0 		& 			& 0	   		& 0 	& 0\\
+\hline
+Total 			& 			& 				& 			& 			& 			& n.d. 		& 0,389  	& n.d.\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+Naive Bayes, \texttt{Python}, Wortvorkommen in mind. 1\% der Texte,\\
+Lemmatisierung mit spacy, Englisch\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+ & D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
+\hline
+Dominant & 13 & 4 & 12 & 4 & 0,407 & 0,394 & 0,722 & 0,51\\
+Gewissenhaft & 0 & 3 & 3 & 0 & & 0,5 & 0,214 & 0,3\\
+Initiativ & 4 & 5 & 16 & 11 & & 0,444 & 0,444 & 0,444\\
+Stetig & 1 & 2 & 5 & 3 & & 0,273 & 0,167 & 0,207\\
+\hline
+Total  &   &   &   &   & & 0,402  & 0,387   & 0,365\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+Naive Bayes, \texttt{Python}, Wortvorkommen in mind. 1\% der Texte,\\
+Lemmatisierung mit spacy, Deutsch\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+ & D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
+\hline
+Dominant & 16 & 2 & 13 & 2 &0,453 & 0,593 & 0,889 & 0,711\\
+Gewissenhaft & 0 & 5 & 4 & 1 & & 0,5 & 0,357 & 0,417\\
+Initiativ & 2 & 5 & 16 & 13& & 0,444 & 0,444 & 0,444\\
+Stetig & 0 & 2 & 3 & 2& & 0,286 & 0,111 & 0,16 \\
+\hline
+Total  &   &   &   &   & & 0,456  & 0,450   & 0,433\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
