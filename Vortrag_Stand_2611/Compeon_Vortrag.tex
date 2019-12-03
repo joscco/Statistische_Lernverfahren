@@ -2,43 +2,15 @@
 \usepackage[utf8]{inputenc}
 % \usepackage[latin1]{inputenc} %  Alternativ unter Windows
 % \usepackage[T1]{fontenc}
-\usepackage{dsfont}
 \usepackage[ngerman]{babel}
 \usepackage[toc,page]{appendix}
 \usepackage{latexsym}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{hyperref}
 
-% einige Abkuerzungen, Funktionale fett mit eckigen Klammern, Mengen + Mengenfunktionen gestrichen, alle normalen Funktionen normale Klammern
-\newcommand{\C}{\mathbb{C}} % komplexe
-\newcommand{\K}{\mathbb{K}} % komplexe
-\newcommand{\R}{\mathbb{R}} % reelle
-\newcommand{\Q}{\mathbb{Q}} % rationale
-\newcommand{\Z}{\mathbb{Z}} % ganze
-\newcommand{\N}{\mathbb{N}} % natuerliche
-\newcommand{\E}{\mathbf{E}} % Erwartungswert
-\newcommand{\Var}{\mathbf{Var}} % Varianz
-\newcommand{\Prob}{\mathbf{P}} % Wahrscheinlichkeit
-\newcommand{\one}{\mathds{1}} % Charakteristische Funktion
-\newcommand{\filtration}{\mathbb{F}} % Filtration
-\newcommand{\F}{\mathcal{F}} %sigma-F
-\newcommand{\id}{\text{id}} % Identität
-\newcommand{\Zet}{Z}
-\newcommand{\z}{\mathbf{z}}
-\newcommand{\s}{\mathbf{s}}
-\newcommand{\te}{\mathbf{t}}
-\renewcommand{\P}{\mathbf{P}}
-\renewcommand{\Q}{\mathbf{Q}}
-\newcommand{\p}{\mathbf{p}}
-\newcommand{\q}{\mathbf{q}}
-\newcommand{\supp}{\text{supp}}
-
-\newtheorem{Algorithmus}{Algorithmus}
 \useoutertheme{infolines}
 \beamertemplatenavigationsymbolsempty
 \setbeamertemplate{headline}{}
-
-\newcommand{\CoEx}[2]{\E\left[\left. #1\,\right| #2\right]}
 
 \title{Seminar Statistische Lernverfahren}
 \subtitle{Klassifikation von Rezensionstypen}
@@ -165,6 +137,53 @@ Probleme:
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+ \frametitle{Erstellen von Prädiktoren}
+ \framesubtitle{PCA - Principal Component Analysis}
+ Ziel: Dimensionsreduktion \\
+ \vspace{12pt}
+ Idee: Suche die Datenachsen, auf denen die Varianz am größten ist \\
+ \vspace{12pt}
+ Verfahren:\\
+ 
+ \begin{itemize}
+  \item Sei $X$ die DT-Matrix (Spaltenmittelwerte = 0)
+  \item Bestimme die Kovarianzmatrix $Cov = X^TX$
+  \item Bestimme die Eigenwerte $\lambda_i$ und Eigenvektoren $v_i$ von $Cov$
+  \item Sei $V = (v_1| v_2| ...)$
+  \item Transformiere die Daten zu $\hat{X} = X V$
+ \end{itemize}
+
+ \vspace{12pt}
+ Problem: Die Resultate verlieren an Interpretierbarkeit
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Erstellen von Prädiktoren}
+ \framesubtitle{PCA - Principal Component Analysis}
+ \includegraphics[scale=0.36]{PCA_1_2.png}
+ \includegraphics[scale=0.36]{PCA_2_3.png}
+ \includegraphics[scale=0.36]{PCA_3_4.png}
+ \includegraphics[scale=0.36]{PCA_4_5.png}
+ 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Erstellen von Prädiktoren}
+ \framesubtitle{PCA - Principal Component Analysis}
+ Fazit:
+ \begin{itemize}
+  \item Die Dominanten Reviews haben eine geringere Varianz
+  \item keine erkennbaren Gruppen
+  \item Mittelwerte der Gruppen sind ähnlich
+ \end{itemize}
+ 
+ Das Verfahren liefert keine besseren Ergebnisse. 
+
+\end{frame}
+
+
 
 \section{Analysemathoden}
 %<-------------Folie 8--------->
@@ -176,6 +195,7 @@ Probleme:
 \end{itemize}
 \end{frame}
 
+\subsection{Naive Bayes}
 \begin{frame}
 \frametitle{Resultate Naive Bayes, R, mind. 20 mal Wörter}
 \begin{tabular}{r|c|c|c|c|}
@@ -191,14 +211,14 @@ Stetig & 0 & 1 & 0 & 0
 
 \begin{frame}
 \frametitle{Resultate Naive Bayes, Python, mind. in 1\% der Texte, englisch}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
-\hline
-Dominant & 13 & 0 & 4 & 1 \\
-Gewissenhaft & 4 & 3 & 5 & 2\\
-Initiativ & 12 & 3 & 16 & 5\\
-Stetig & 4 & 0 & 11 & 3
-\end{tabular}
+ \begin{tabular}{r|c|c|c|c|}
+                &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+ \hline
+  Dominant      & 13 & 0 & 4 & 1 \\
+  Gewissenhaft  & 4 & 3 & 5 & 2\\
+  Initiativ     & 12 & 3 & 16 & 5\\
+  Stetig        & 4 & 0 & 11 & 3
+ \end{tabular}
 \end{frame}
 
 \begin{frame}
@@ -212,5 +232,71 @@ Initiativ & 13 & 4 & 16 & 3\\
 Stetig & 2 & 1 & 13 & 2
 \end{tabular}
 \end{frame}
+
+\subsection{Entscheidungsbaum}
+\subsection{Random Forest}
+\subsection{Lineare Modelle}
+
+\subsection{Weitere Methoden}
+\begin{frame}
+ \frametitle{Analysemathoden}
+ \framesubtitle{weitere Anpassungen und Modelle}
+ Mit Naive Bayes und den Wortarten als Prädiktoren lässt sich zuverlässig voraussagen,
+ ob eine Person extrovertiert ist:\\
+ \vspace{12pt}
+ \begin{center}
+ \begin{tabular}{r|c|c|}
+  &  extrovertiert  & introvertiert \\
+  \hline
+  extrovertiert & 30 & 5  \\
+  introvertiert & 24 & 27 \\
+ \end{tabular} 
+ \end{center}
+
+ \vspace{12pt}
+ 
+ Idee:\\
+ Nutze die Vorhersage dieses Modells um ein neues Modell anzupassen.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Analysemathoden}
+ \framesubtitle{weitere Anpassungen und Modelle}
+ 
+ \begin{minipage}{0.45\textwidth}
+  
+ Random Forest\\
+ \begin{center}
+ \begin{tabular}{c|c|c|c|c|}
+                &  D     & G  & I     & S\\
+  \hline
+  D      & 14            & 2             & 8             & 1 \\
+  G  & 1             & 4             & 1             & 0\\
+  I     & 3             & 7             & 25            & 15\\
+  S        & 0             & 1             & 2             & 2
+ \end{tabular}
+ \end{center}
+ \end{minipage}
+ \begin{minipage}{0.45\textwidth}
+ Random Forest mit Naive Bayes\\
+ \begin{center}
+  \begin{tabular}{c|c|c|c|c|}
+      &  D    & G   & I     & S\\
+  \hline
+  D   & 15    & 2   & 9             & 1 \\
+  G   & 0     & 4   & 1             & 1\\
+  I   & 3     & 8   & 24            & 13\\
+  S   & 0     & 0   & 2             & 3
+ \end{tabular}
+ \end{center}
+ \end{minipage}
+
+ 
+ 
+ \vspace{12pt}
+ Das modifizierte Verfahren liefert im Schnitt keine besseren Ergebnisse
+\end{frame}
+
+
 
 \end{document}
