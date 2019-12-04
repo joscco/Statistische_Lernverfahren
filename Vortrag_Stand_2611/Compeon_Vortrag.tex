@@ -62,24 +62,6 @@ rational & gewissenhaft & dominant
 \item Gegeben: 439 bereits klassifizierte Reviews
 \end{itemize}
 \end{frame}
-%<-------------Folie 2--------->
-\begin{frame}
-\frametitle{Schwierigkeiten}
-\begin{itemize}
-\item Keine eindeutige Klassifikation
-\begin{itemize}
-\item Auch für Menschen nicht eindeutig
-\item Teilweise sehr geringe Unterschiede zwischen den Typen
-\end{itemize}
-\item Geringe Zahl an Trainingsdaten
-\item Unbalanciertes Studiendesign
-\item Representativität
-\begin{itemize}
-\item Introvertierte Kunden schreiben weniger häufig Reviews
-\item Nur positive Bewertungen lagen vor
-\end{itemize}
-\end{itemize}
-\end{frame}
 
 
 %<-------------Folie 4--------->
@@ -220,12 +202,12 @@ bzw. für unabhängige Prädiktoren $x_1,...,x_n$ als
 \hline
 				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant 		& 14		& 2 			& 8 		& 1 		& 0,488 	& 0,412 	& 0,778 	& 0,538\\
+Dominant 		& 14		& 2 			& 8 		& 1 		&       	& 0,412 	& 0,778 	& 0,538\\
 Gewissenhaft 	& 0 		& 0 			& 0 		& 0 		& 			& n.d. 		& 0 	& n.d.\\
 Initiativ 		& 4 		& 11			& 28		& 17		& 			& 0,467		& 0,778 	& 0,583\\
 Stetig 			& 0 		& 1 			& 0 		& 0 		& 			& 0	   		& 0 	& 0\\
 \hline
-Total 			& 			& 				& 			& 			& 			& n.d. 		& 0,389  	& n.d.\\
+Total 			& 			& 				& 			& 			& 0,488		& n.d. 		& 0,389  	& n.d.\\
 \hline
 \end{tabular}
 \end{center}
@@ -239,12 +221,12 @@ Lemmatisierung mit spacy, Englisch\
 \hline
  & D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant & 13 & 4 & 12 & 4 & 0,407 & 0,394 & 0,722 & 0,51\\
+Dominant & 13 & 4 & 12 & 4 & & 0,394 & 0,722 & 0,51\\
 Gewissenhaft & 0 & 3 & 3 & 0 & & 0,5 & 0,214 & 0,3\\
 Initiativ & 4 & 5 & 16 & 11 & & 0,444 & 0,444 & 0,444\\
 Stetig & 1 & 2 & 5 & 3 & & 0,273 & 0,167 & 0,207\\
 \hline
-Total  &   &   &   &   & & 0,402  & 0,387   & 0,365\\
+Total  &   &   &   &   & 0,407 & 0,402  & 0,387   & 0,365\\
 \hline
 \end{tabular}
 \end{center}
@@ -258,12 +240,12 @@ Lemmatisierung mit spacy, Deutsch\
 \hline
  & D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant & 16 & 2 & 13 & 2 &0,453 & 0,593 & 0,889 & 0,711\\
+Dominant & 16 & 2 & 13 & 2 & & 0,593 & 0,889 & 0,711\\
 Gewissenhaft & 0 & 5 & 4 & 1 & & 0,5 & 0,357 & 0,417\\
 Initiativ & 2 & 5 & 16 & 13& & 0,444 & 0,444 & 0,444\\
 Stetig & 0 & 2 & 3 & 2& & 0,286 & 0,111 & 0,16 \\
 \hline
-Total  &   &   &   &   & & 0,456  & 0,450   & 0,433\\
+Total  &   &   &   &   & 0,453 & 0,456  & 0,450   & 0,433\\
 \hline
 \end{tabular}
 \end{center}
@@ -470,7 +452,7 @@ Stetig & 0 & 1 & 1 &  3
 \end{frame}
 %<-------------Folie--------->
 \begin{frame}
-\frametitle{Resultate Random Forst, R, mind. 20 mal Wörter}
+\frametitle{Resultate Random Forest, R, mind. 20 mal Wörter}
 \begin{center}
 \begin{tabular}{r|c|c|c|}
  &  Precision  & Recall & F1 \\
