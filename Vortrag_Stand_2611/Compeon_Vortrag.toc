@@ -2,8 +2,9 @@
 \beamer@sectionintoc {1}{Problemstellung}{3}{0}{1}
 \beamer@sectionintoc {2}{Erstellen von Pr\IeC {\"a}diktoren}{5}{0}{2}
 \beamer@sectionintoc {3}{Analysemathoden}{12}{0}{3}
-\beamer@subsectionintoc {3}{1}{Naive Bayes}{13}{0}{3}
-\beamer@subsectionintoc {3}{2}{Entscheidungsbaum}{16}{0}{3}
-\beamer@subsectionintoc {3}{3}{Random Forest}{16}{0}{3}
-\beamer@subsectionintoc {3}{4}{Lineare Modelle}{16}{0}{3}
-\beamer@subsectionintoc {3}{5}{Weitere Methoden}{16}{0}{3}
+\beamer@subsectionintoc {3}{1}{Entscheidungsbaum}{16}{0}{3}
+\beamer@subsectionintoc {3}{2}{Random Forest}{16}{0}{3}
+\beamer@subsectionintoc {3}{3}{Lineare Modelle}{16}{0}{3}
+\beamer@subsectionintoc {3}{4}{Weitere Methoden}{16}{0}{3}
+\beamer@sectionintoc {4}{Analysemethoden}{18}{0}{4}
+\beamer@sectionintoc {5}{Analysemethoden}{32}{0}{5}
