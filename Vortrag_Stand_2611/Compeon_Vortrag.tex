@@ -204,10 +204,10 @@ bzw. für unabhängige Prädiktoren $x_1,...,x_n$ als
 \hline
 Dominant 		& 14		& 2 			& 8 		& 1 		&       	& 0,412 	& 0,778 	& 0,538\\
 Gewissenhaft 	& 0 		& 0 			& 0 		& 0 		& 			& n.d. 		& 0 	& n.d.\\
-Initiativ 		& 4 		& 11			& 28		& 17		& 			& 0,467		& 0,778 	& 0,583\\
-Stetig 			& 0 		& 1 			& 0 		& 0 		& 			& 0	   		& 0 	& 0\\
+Initiativ 		& 4 		& 11			& 28		& 17		& 			& 0,467	& 0,778 	& 0,583\\
+Stetig 			& 0 		& 1 			& 0 		& 0 		& 			& n.d.	   		& 0 	& n.d\\
 \hline
-Total 			& 			& 				& 			& 			& 0,488		& n.d. 		& 0,389  	& n.d.\\
+Total 			& 			& 				& 			& 			& 0,494		& n.d. 		& 0,389  	& n.d.\\
 \hline
 \end{tabular}
 \end{center}
@@ -221,12 +221,12 @@ Lemmatisierung mit spacy, Englisch\
 \hline
  & D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant & 13 & 4 & 12 & 4 & & 0,394 & 0,722 & 0,51\\
+Dominant & 13 & 4 & 12 & 4 & & 0,433 & 0,722 & 0,542\\
 Gewissenhaft & 0 & 3 & 3 & 0 & & 0,5 & 0,214 & 0,3\\
 Initiativ & 4 & 5 & 16 & 11 & & 0,444 & 0,444 & 0,444\\
 Stetig & 1 & 2 & 5 & 3 & & 0,273 & 0,167 & 0,207\\
 \hline
-Total  &   &   &   &   & 0,407 & 0,402  & 0,387   & 0,365\\
+Total  &   &   &   &   & 0,407 & 0,413  & 0,387   & 0,373\\
 \hline
 \end{tabular}
 \end{center}
@@ -240,12 +240,12 @@ Lemmatisierung mit spacy, Deutsch\
 \hline
  & D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant & 16 & 2 & 13 & 2 & & 0,593 & 0,889 & 0,711\\
+Dominant & 16 & 2 & 13 & 2 & & 0,444 & 0,889 & 0,593\\
 Gewissenhaft & 0 & 5 & 4 & 1 & & 0,5 & 0,357 & 0,417\\
 Initiativ & 2 & 5 & 16 & 13& & 0,444 & 0,444 & 0,444\\
 Stetig & 0 & 2 & 3 & 2& & 0,286 & 0,111 & 0,16 \\
 \hline
-Total  &   &   &   &   & 0,453 & 0,456  & 0,450   & 0,433\\
+Total  &   &   &   &   & 0,453 & 0,419  & 0,45   & 0,403\\
 \hline
 \end{tabular}
 \end{center}
@@ -330,29 +330,17 @@ Total  &   &   &   &   & 0,453 & 0,456  & 0,450   & 0,433\\
 \begin{frame}
 \frametitle{Resultate Entscheidungsbaum, R, mind. 20 mal Wörter}
 \begin{center}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-Dominant & 14 & 3 & 9 & 1 \\
-Gewissenhaft & 0 & 3 & 5 & 5\\
-Initiativ & 2 & 4 & 19 & 5\\
-Stetig & 2 & 4 & 3 & 7
-\end{tabular}
-\end{center}
-\end{frame}
-%<-------------Folie--------->
-\begin{frame}
-\frametitle{Resultate Entscheidungsbaum, R, mind. 20 mal Wörter}
-\begin{center}
-\begin{tabular}{r|c|c|c|}
- &  Precision  & Recall & F1 \\
+ &  D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant     & 51,8\% & 77,7\% & 62,1\% \\
-Gewissenhaft & 23,0\% & 21,4\% & 22,1\% \\
-Initiativ    & 63,3\% & 52,7\% & 57,5\% \\
-Stetig       & 43,7\% & 38,8\% & 41,1\% \\
+Dominant & 14 & 3 & 9 & 1 & & 51,8\% & 77,7\% & 62,1\% \\
+Gewissenhaft & 0 & 3 & 5 & 5& &23,0\% & 21,4\% & 22,1\%\\
+Initiativ & 2 & 4 & 19 & 5& &63,3\% & 52,7\% & 57,5\%\\
+Stetig & 2 & 4 & 3 & 7& &43,7\% & 38,8\% & 41,1\% \\
 \hline
-Macro        & 45,4\% & 47,6\% & 45,4\%
+Total 	&		&		& & 		& 50,0\%	& 45,4\% & 47,6\% & 45,4\%\\
+\hline
 \end{tabular}
 \end{center}
 \end{frame}
@@ -360,29 +348,17 @@ Macro        & 45,4\% & 47,6\% & 45,4\%
 \begin{frame}
 \frametitle{Resultate Entscheidungsbaum, Python, mind. in 1\% der Texte, englisch}
 \begin{center}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-Dominant &     9 & 4 & 12 & 5 \\
-Gewissenhaft & 2 & 3 & 4 & 2\\
-Initiativ &    5 & 5 & 12 & 8\\
-Stetig &       2 & 2 & 8 & 3
-\end{tabular}
-\end{center}
-\end{frame}
-%<-------------Folie--------->
-\begin{frame}
-\frametitle{Resultate Entscheidungsbaum, Python, mind. in 1\% der Texte, englisch}
-\begin{center}
-\begin{tabular}{r|c|c|c|}
- &  Precision  & Recall & F1 \\
+ &  D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant     & 30,0\% & 50,0\% & 37,5\% \\
-Gewissenhaft & 27,2\% & 21,4\% & 23,9\% \\
-Initiativ    & 40,0\% & 33,3\% & 36,3\% \\
-Stetig       & 20,0\% & 16,6\% & 18,1\% \\
+Dominant &     9 & 4 & 12 & 5& &30,0\% & 50,0\% & 37,5\% \\
+Gewissenhaft & 2 & 3 & 4 & 2&& 27,2\% & 21,4\% & 23,9\% \\
+Initiativ &    5 & 5 & 12 & 8&& 40,0\% & 33,3\% & 36,3\%\\
+Stetig &       2 & 2 & 8 & 3&& 20,0\% & 16,6\% & 18,1\% \\
 \hline
-Macro        & 29,3\% & 30,3\% & 28,9\%
+Total 	&		&		& &	& 31,3\%		& 29,3\% & 30,3\% & 28,9\% \\
+\hline
 \end{tabular}
 \end{center}
 \end{frame}
@@ -390,29 +366,17 @@ Macro        & 29,3\% & 30,3\% & 28,9\%
 \begin{frame}
 \frametitle{Resultate Entscheidungsbaum, Python, mind. in 1\% der Texte, deutsch}
 \begin{center}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-Dominant &     13 & 4 & 16 & 1 \\
-Gewissenhaft & 2 & 4 & 1 & 3\\
-Initiativ &    3 & 5 & 13 & 7\\
-Stetig &       0 & 1 & 6 & 7
-\end{tabular}
-\end{center}
-\end{frame}
-%<-------------Folie--------->
-\begin{frame}
-\frametitle{Resultate Entscheidungsbaum, Python, mind. in 1\% der Texte, deutsch}
-\begin{center}
-\begin{tabular}{r|c|c|c|}
- &  Precision  & Recall & F1 \\
+ &  D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant     & 38,2\% & 72,2\% & 49,9\% \\
-Gewissenhaft & 40,0\% & 28,5\% & 33,2\% \\
-Initiativ    & 46,4\% & 36,1\% & 40,6\% \\
-Stetig       & 50,0\% & 38,8\% & 43,6\% \\
+Dominant &     13 & 4 & 16 & 1&&  38,2\% & 72,2\% & 49,9\% \\
+Gewissenhaft & 2 & 4 & 1 & 3 &&  40,0\% & 28,5\% & 33,2\%  \\
+Initiativ &    3 & 5 & 13 & 7&& 46,4\% & 36,1\% & 40,6\%  \\
+Stetig &       0 & 1 & 6 & 7 &&  50,0\% & 38,8\% & 43,6\% \\
 \hline
-Macro        & 43,6\% & 43,9\% & 41,8\%
+Total 	&		&		& & 		&  43,0\%			&  43,6\% & 43,9\% & 41,8\% \\
+\hline
 \end{tabular}
 \end{center}
 \end{frame}
@@ -432,36 +396,24 @@ Macro        & 43,6\% & 43,9\% & 41,8\%
 \item Erzeuge Entscheidungsbaum
 \item Generiere so viele Entscheidungsbäume
 \item Entscheidung durch Mehrheitsentscheidung
-\item \texttt{R} \texttt{randomForest} 2000 Bäume
+\item \texttt{R} \texttt{randomForest} 2000 Bäume, analog in  \texttt{Python}
 \end{itemize}
 \end{frame}
 %<-------------Folie--------->
 \begin{frame}
 \frametitle{Resultate Random Forest, R, mind. 20 mal Wörter}
 \begin{center}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-Dominant & 14 & 2 & 10& 0 \\
-Gewissenhaft & 2 & 4 & 0 & 1\\
-Initiativ & 2 & 7  & 25 & 14\\
-Stetig & 0 & 1 & 1 &  3
-\end{tabular}
-\end{center}
-\end{frame}
-%<-------------Folie--------->
-\begin{frame}
-\frametitle{Resultate Random Forest, R, mind. 20 mal Wörter}
-\begin{center}
-\begin{tabular}{r|c|c|c|}
- &  Precision  & Recall & F1 \\
+ &  D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant     & 53,8\% & 77,7\% & 63,5\% \\
-Gewissenhaft & 57,1\% & 28,5\% & 28,0\% \\
-Initiativ    & 52,0\% & 69,4\% & 59,4\% \\
-Stetig       & 60,0\% & 16,6\% & 26,0\% \\
+Dominant & 14 & 2 & 10& 0 &&53,8\% & 77,7\% & 63,5\% \\
+Gewissenhaft & 2 & 4 & 0 & 1&&57,1\% & 28,5\% & 28,0\% \\
+Initiativ & 2 & 7  & 25 & 14&&52,0\% & 69,4\% & 59,4\% \\
+Stetig & 0 & 1 & 1 &  3&&60,0\% & 16,6\% & 26,0\% \\
 \hline
-Macro        & 55,7\% & 48,0\% & 44,2\%
+Total 	&		&		& & 		& 53,4\%		&   55,7\% & 48,0\% & 44,2\%\\
+\hline
 \end{tabular}
 \end{center}
 \end{frame}
@@ -469,29 +421,17 @@ Macro        & 55,7\% & 48,0\% & 44,2\%
 \begin{frame}
 \frametitle{Resultate Random Forest, Python, mind. in 1\% der Texte, englisch}
 \begin{center}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-Dominant & 16 & 4 & 14 & 4 \\
-Gewissenhaft & 0 & 6 & 2 & 1\\
-Initiativ & 1 & 4 & 16 & 9\\
-Stetig & 1 & 0 & 4 & 4
-\end{tabular}
-\end{center}
-\end{frame}
-%<-------------Folie--------->
-\begin{frame}
-\frametitle{Resultate Random Forest, Python, mind. in 1\% der Texte, englisch}
-\begin{center}
-\begin{tabular}{r|c|c|c|}
- &  Precision  & Recall & F1 \\
+ &  D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant     & 42,1\% & 88,8\% & 57,1\% \\
-Gewissenhaft & 66,6\% & 42,8\% & 52,1\% \\
-Initiativ    & 53,3\% & 44,4\% & 48,4\% \\
-Stetig       & 44,4\% & 22,2\% & 29,6\% \\
+Dominant & 16 & 4 & 14 & 4 &&42,1\% & 88,8\% & 57,1\% \\
+Gewissenhaft & 0 & 6 & 2 & 1&&66,6\% & 42,8\% & 52,1\% \\
+Initiativ & 1 & 4 & 16 & 9&&53,3\% & 44,4\% & 48,4\% \\
+Stetig & 1 & 0 & 4 & 4&&44,4\% & 22,2\% & 29,6\% \\
 \hline
-Macro        & 51,6\% & 49,5\% & 46,8\%
+Total 	&		&		& & 		& 48,8\%		&    51,6\% & 49,5\% & 46,8\%\\
+\hline
 \end{tabular}
 \end{center}
 \end{frame}
@@ -499,29 +439,17 @@ Macro        & 51,6\% & 49,5\% & 46,8\%
 \begin{frame}
 \frametitle{Resultate Random Forest, Python, mind. in 1\% der Texte, deutsch}
 \begin{center}
-\begin{tabular}{r|c|c|c|c|}
- &  Dominant  & Gewissenhaft & Initiativ & Stetig\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
-Dominant & 15 & 4 & 15 & 2 \\
-Gewissenhaft & 0 & 3 & 4 & 3\\
-Initiativ & 2 & 4 & 15 & 9\\
-Stetig & 1 & 3 & 2 & 4
-\end{tabular}
-\end{center}
-\end{frame}
-%<-------------Folie--------->
-\begin{frame}
-\frametitle{Resultate Random Forest, Python, mind. in 1\% der Texte, deutsch}
-\begin{center}
-\begin{tabular}{r|c|c|c|}
- &  Precision  & Recall & F1 \\
+ &  D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant     & 41,6\% & 83,3\% & 55,4\% \\
-Gewissenhaft & 30,0\% & 21,4\% & 24,9\% \\
-Initiativ    & 50,0\% & 41,6\% & 45,4\% \\
-Stetig       & 40,0\% & 22,2\% & 28,5\% \\
+Dominant & 15 & 4 & 15 & 2 &&41,6\% & 83,3\% & 55,4\% \\
+Gewissenhaft & 0 & 3 & 4 & 3&&30,0\% & 21,4\% & 24,9\% \\
+Initiativ & 2 & 4 & 15 & 9&&50,0\% & 41,6\% & 45,4\% \\
+Stetig & 1 & 3 & 2 & 4&&40,0\% & 22,2\% & 28,5\% \\
 \hline
-Macro        & 40,4\% & 42,1\% & 38,5\%
+Total 	&		&		& & 		& 43,0\%		&    40,4\% & 42,1\% & 38,5\%\\
+\hline
 \end{tabular}
 \end{center}
 \end{frame}
