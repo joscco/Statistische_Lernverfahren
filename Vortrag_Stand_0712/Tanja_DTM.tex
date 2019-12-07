@@ -1,14 +1,93 @@
 \begin{frame}
 \frametitle{Erstellen von Prädiktoren}
-\framesubtitle{Filterung der Prädikatoren, weitere}
+\framesubtitle{Filterung der Prädiktoren}
 \begin{itemize}\itemsep12pt
 \item Nach Erstellung der Grundwörter konnte gefiltert werden, welche Wörter häufig auftraten
-\item Denkbare Filtermethoden:
+\item Denkbare Filtermethoden für das Wörterbuch:
 \begin{itemize}
 \item Nur Wörter, die mind. $n$ Mal aufgetaucht sind 
 \item Nur Wörter, die in mind. $p\%$ der Reviews verwendet wurden
 \end{itemize} 
 \item Anschließend Erstellung einer binären Document-Term-Matrix, die kodiert, welche Grundwörter in welchen Reviews auftauchten
-\item Alternative: PCA um aussagekräftige \glqq Wörterachsen\grqq \,zu bestimmen.
+\item Alternative: PCA um aussagekräftige \glqq Wörterachsen\grqq \,zu bestimmen. Kein sichtbarer Erfolg.
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Document-Term-Matrix}
+\begin{itemize}\itemsep12pt
+\item Wörterbucherstellung aus den verbliebenen Grundwörtern\\
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+		& Lemma 	& n	\\
+\hline
+144 	& .		& 654\\
+143	 	& der	& 531\\
+142 	& und	& 440\\
+%141	 	& ,		& 413\\
+%140	 	& ich	& 318\\
+...		& ...	& ...\\
+2		& dann & 10\\
+1		& abschluss & 10\\
+\hline
+\end{tabular}
+ \end{center}
+
+%\item Erstellung der DTM unter Beachtung der numerischen Reihenfolge der $doc\_id$s (d.h. nicht alphabetisch)
+\item DTM-Zeilen: Reviews 1 bis 439, DTM-Spalten: Grundwörter aus Wörterbuch
+\item zusätzliche Spalten: doc\_id, review, type (Zielvariable) 
+\item Kodierung: Wort kommt in der Review vor (1) oder nicht (0)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Document-Term-Matrix}
+\begin{itemize}\itemsep12pt
+\item Anfügen weiterer Prädiktoren mit Anzahlen pro Review der
+\begin{itemize}
+\item Wörter %$count\_of\_words$
+\item Fragen %$count\_of\_questions$
+\item Imperative %$count\_of\_imperatives$
+\item Sätze %$count\_of\_sentences$
+\item Nebensätze/Trennungen %$count\_of\_subordinated\_clauses\_and\_separations$
+\item Satzzeichen %$count\_of\_punctuation$
+(ggf. einzeln betrachtet)
+\item Wortarten %$count\_of\_parts\_of\_speech$
+\end{itemize} 
+\item Weitere Variablenselektion möglich
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Document-Term-Matrix}
+\vspace{12pt}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+...	&dass&  der 	& dies & ... & doc\_id	& review & words & ...& type\\
+\hline
+... &0& 1		& 0		&	...	& 1		& Die Un...&12 			& ...& Ge\\
+...	& 0&0		& 0		&	...	& 2		& schnell...&7 			& ...& In\\
+...	& 0&0		& 0		&	...	& 3		& Sehr g...&9 			& ...& Do\\
+...	& 0&0		& 0		&	...	& 4		& Super ...&8 			& ...& In\\
+...	& 0&1		& 0		&	...	& 5		& Hervor...&11 			& ...& In\\
+...	& 0&1		& 0		&	...& 6		& Die Zu...&27 			& ...& In\\
+...	& 0&1		& 0		&	...& 7		& untern...&26 			& ...& In\\
+...	& 0&1		& 0		&	...& 8		& Schnell...&23 			& ...& Ge\\
+...	& 0&0		& 0		&	...& 9		& Unkom...&3 			& ...& Do\\
+...	& 0&1		& 0		&	...& 10	& ich ha...&39 			& ...& St\\
+...	& 0&1		& 0		&	...	& 11	& Besten...&19 			& ...& St\\
+...	& 0&0		& 0		&...	& 12	& Sehr f...&8 			& ...& In\\
+...	& ...&...	&...	&	...	& ...  	& ...		&... 			& ...& ...\\
+\hline
+\end{tabular}
+
+
+%\begin{center}
+%	\includegraphics[scale=0.5]{DFGHJKLKJHGFFKLKJHGFDFZULKJHGFDFGHJKLKJHGF.png}
+%\end{center}
 \end{frame}
