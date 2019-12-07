@@ -1,1 +1,92 @@
 \subsection{Lineare Modelle}
+\begin{frame}
+\frametitle{Analysemethoden}
+\framesubtitle{Lineare Modelle}
+\begin{itemize}\itemsep12pt
+\item Idee: Vorhersagen der Label in Form eines linearen Zusammenhangs 
+\begin{align*}
+y=\beta^T\cdot x+\epsilon
+\end{align*}
+mit $\epsilon~\raisebox{-0.9ex}{\~{ }} ~ \mathcal{N}_{n}(0,\sigma)$ und $\beta=(X^TX)^{-1}Xy$;\\
+die Zeilen der DTM entsprechen unserem $x$ 
+\item Da das Modell eine Zahl zurückgibt, müssen die einzelnen Typen oder alternativ die Eigenschaften extro-/introvertiert bzw. emotional/rational separat betrachtet werden.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resultate lineare Modelle}
+Lineares Modell in \texttt{R} mit Wortvorkommen in mind. 20 Texten\\
+%Mit einem linearen Modell und der Typisierung in dominant gewissenhaft initiativ oder stetig als zusätzlichen Prädiktor lässt sich nicht zuverlässig klassifizieren:\\
+\vspace{12pt}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
+\hline
+Dominant 		& 11	& 2 & 12& 5 &      	& 0,367 & 0,611 	& 0,458\\
+Gewissenhaft 	& 4 	& 5 & 12& 4 & 		& 0,200 & 0,357 	& 0,256\\
+Initiativ 		& 2 	& 4	& 11& 7	& 		& 0,458	& 0,306 	& 0,367\\
+Stetig 			& 1 	& 3 & 1 & 2 & 		& 0,286	& 0,111 	& 0,160\\
+\hline
+Total 			& 		& 	& 	& 	& 0,337	& 0,328 & 0,346  	& 0,310\\
+\hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+ \frametitle{Resultate lineare Modelle}
+Lineares Modell in \texttt{R} mit Wortvorkommen in mind. 20 Texten\\
+%Mit linearen Modellen und jeweils nur der Klassifizierung nach extro-/introvertiert bzw. emotional/rational als zusätzlichen Prädiktor lässt sich jeweils zuverlässig klassifizieren:\\
+\vspace{12pt}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+				& emotional 	& rational	&  Acc.	& Prec. & Recall	& F1\\
+\hline
+emotional 		& 24			& 19 		&       & 0,558	& 0,750 	& 0,640\\
+rational	 	& 8 			& 35		& 		& 0,814	& 0,648 	& 0,722\\
+\hline
+Total 			& 				& 			& 0,686	& 0,343	& 0,350  	& 0,340\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+				& extro. 	& intro.	&  Acc.	& Prec. 	& Recall	& F1\\
+\hline
+extrovertiert	& 43		& 20		&       & 0,683 	& 0,796 	& 0,735\\
+introvertiert 	& 11 		& 12		& 		& 0,522 	& 0,375 	& 0,436\\
+\hline
+Total 			& 			& 			& 0,640	& 0,301		& 0,293  	& 0,293\\
+\hline
+\end{tabular}
+ \end{center}
+
+ \vspace{12pt}
+ 
+ Idee:\\
+ Nutze die Vorhersage dieses Modells um ein neues Modell anzupassen. 
+ \end{frame}
+
+\begin{frame}
+ \frametitle{Resultate lineare Modelle}
+Modifiziertes Modell aus beiden vorherigen linearen Modellen in \texttt{R} mit Wortvorkommen in mind. 20 Texten\\
+%Mit der Kombination aus den beiden vorherigen linearen Modellen (also unter separater Betrachtung der Klassifizierungen nach extro-/introvertiert und emotional/rational) lässt sich zuverlässiger klassifizieren:\\
+\vspace{12pt}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
+\hline
+Dominant 		& 13	& 4 & 12& 2 &      	& 0,419 & 0,722 	& 0,531\\
+Gewissenhaft 	& 2 	& 5 & 4 & 1 & 		& 0,417 & 0,357 	& 0,385\\
+Initiativ 		& 2 	& 3	& 16& 11& 		& 0,500	& 0,444 	& 0,471\\
+Stetig 			& 1 	& 2 & 4	& 4 & 		& 0,364	& 0,222 	& 0,276\\
+\hline
+Total 			& 		& 	& 	& 	& 0,442	& 0,425 & 0,437	  	& 0,415\\
+\hline
+\end{tabular}
+ \vspace{12pt}
+ 
+Das modifizierte Modell liefert eine höhere Zuverlässigkeit.
+\end{frame}
