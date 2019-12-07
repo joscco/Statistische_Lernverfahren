@@ -1,0 +1,14 @@
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Filterung der Prädikatoren, weitere}
+\begin{itemize}\itemsep12pt
+\item Nach Erstellung der Grundwörter konnte gefiltert werden, welche Wörter häufig auftraten
+\item Denkbare Filtermethoden:
+\begin{itemize}
+\item Nur Wörter, die mind. $n$ Mal aufgetaucht sind 
+\item Nur Wörter, die in mind. $p\%$ der Reviews verwendet wurden
+\end{itemize} 
+\item Anschließend Erstellung einer binären Document-Term-Matrix, die kodiert, welche Grundwörter in welchen Reviews auftauchten
+\item Alternative: PCA um aussagekräftige \glqq Wörterachsen\grqq \,zu bestimmen.
+\end{itemize}
+\end{frame}

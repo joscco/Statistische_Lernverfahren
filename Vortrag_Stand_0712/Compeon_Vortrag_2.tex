@@ -1,0 +1,61 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+% \usepackage[latin1]{inputenc} %  Alternativ unter Windows
+% \usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[toc,page]{appendix}
+\usepackage{latexsym}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\newcommand*{\quelle}{%
+	\footnotesize Quelle:
+}
+
+\useoutertheme{infolines}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}{}
+
+\title{Seminar Statistische Lernverfahren}
+\subtitle{Klassifikation von Rezensionstypen}
+\author[T.G., M.H., A.K., M.L., T.N., J.S.]{Till Gräfenberg, Matthias Häußler, Alexander Kohlscheen, Michael Lau, Tanja Niklas, Jonathan Schmitz}
+\date{12. Dezember 2019}
+\begin{document}
+\begin{frame}
+\thispagestyle{empty}
+\titlepage
+\end{frame}
+%<-------------Folie 1--------->
+\begin{frame}
+\addtocounter{framenumber}{-1}
+\frametitle{Inhaltsverzeichnis}
+\begin{enumerate}\itemsep10pt
+\item Problemstellung
+\item Erstellen von Prädiktoren
+\item Analysemethoden
+	\begin{enumerate}
+	\item Naive Bayes
+	\item Entscheidungsbaum
+	\item Random Forest
+	\item Support Vector Machine
+	\item weitere Anpassungen und Modelle
+	\end{enumerate}
+\end{enumerate}
+\end{frame}
+\input{Alexander.tex}
+
+\input{Tanja_DTM.tex}
+
+\input{Till_PCA.tex}
+
+\input{Jonathan.tex}
+
+\input{Tanja_LM.tex}
+
+\input{Till_extrointro.tex}
+
+\input{Matthias.tex}
+
+\input{Michael.tex}
+
+\end{document}

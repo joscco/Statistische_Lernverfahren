@@ -1,0 +1,63 @@
+\subsection{Weitere Methoden}
+\begin{frame}
+ \frametitle{Analysemethoden}
+ \framesubtitle{weitere Anpassungen und Modelle}
+ Mit Naive Bayes und den Wortarten als Prädiktoren lässt sich zuverlässig voraussagen,
+ ob eine Person extrovertiert ist:\\
+ \vspace{12pt}
+ \begin{center} 
+ Naive Bayes, \texttt{R}, Wortarten, Wortvorkommen in mind. 10 Texten
+  \begin{tabular}{c|c|c|c|c|c|c|}
+                & extro & intro & Acc.  & Prec. & Recall    & F1 \\
+  \hline
+  extrovertiert & 30    & 5     &       & 0,714 & 0,556     & 0,625 \\
+  introvertiert & 24    & 27    &       & 0,529 & 0,843     & 0,65 \\
+  \hline
+  Total         &       &       & 0,663 & 0,622 & 0,7       & 0,638 \\
+  \hline
+ \end{tabular}
+ 
+ \end{center}
+
+ \vspace{12pt}
+ 
+ Idee:\\
+ Nutze die Vorhersage dieses Modells um ein neues Modell anzupassen.
+\end{frame}
+
+\begin{frame}
+ \frametitle{Analysemethoden}
+ \framesubtitle{weitere Anpassungen und Modelle}
+ 
+ Random Forest, \texttt{R}, Wortvorkommen in mind. 10 Texten
+ \begin{center}
+ \begin{tabular}{c|c|c|c|c|c|c|c|c|}
+                & D     & G  & I    & S   & Acc.  & Prec. & Recall    & F1 \\
+  \hline
+  Dominant      & 14    & 2  & 8    & 1   &       & 0,56  & 0,778     & 0,561 \\
+  Gewissenhaft  & 1     & 4  & 1    & 0   &       & 0,667 & 0,286     & 0,4 \\
+  Initiativ     & 3     & 7  & 25   & 15  &       & 0,5   & 0,694     & 0,581\\
+  Stetig        & 0     & 1  & 2    & 2   &       & 0,4   & 0,111     & 0,174\\
+  \hline
+  Total         &       &    &      &     & 0,523 & 0,532 & 0,467     & 0,452\\
+  \hline
+ \end{tabular}
+ \end{center}
+ 
+ \vspace{12pt}
+ Random Forest mit Naive Bayes, \texttt{R}, Wortvorkommen in mind. 10 Texten
+ \begin{center}
+  \begin{tabular}{c|c|c|c|c|c|c|c|c|}
+                & D     & G  & I    & S   & Acc.  & Prec. & Recall    & F1 \\
+  \hline
+  Dominant      & 15    & 2  & 9    & 1   &       & 0,577 & 0,833     & 0,682 \\
+  Gewissenhaft  & 0     & 4  & 1    & 1   &       & 0,667 & 0,286     & 0,4 \\
+  Initiativ     & 3     & 8  & 24   & 13  &       & 0,5   & 0,667     & 0,571\\
+  Stetig        & 0     & 0  & 2    & 3   &       & 0,6   & 0,167     & 0,261\\
+  \hline
+  Total         &       &    &      &     & 0,535 & 0,586 & 0,488     & 0,479\\
+  \hline
+ \end{tabular}
+ \end{center}
+ 
+\end{frame}
