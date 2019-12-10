@@ -32,9 +32,10 @@
 \end{frame}
 %<-------------Folie--------->
 \begin{frame}
-\frametitle{Resultate Support Vector Machine}
+\frametitle{Analysemethoden}
+\framesubtitle{Support Vector Machine}
 \begin{center}
-Support Vector Machine, \texttt{R}, Wortvorkommen mind. 10 mal,\\
+Resultate Support Vector Machine, \texttt{R}, Wortvorkommen $\geq$ 10,\\
 Radialer Kern, Modifizierter CISTEM-Stemmer, Deutsch
 
 \bigskip
@@ -43,21 +44,22 @@ Radialer Kern, Modifizierter CISTEM-Stemmer, Deutsch
 \hline
 				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant 		& 14		& 3 			& 8 		& 1 		&       	& 53,8\% 	& 77,8\% 	& 63,6\%\\
-Gewissenhaft 	& 0 		& 1 			& 1 		& 0 		& 			& 50,0\% 	& 7,1\% 	& 16,3\%\\
-Initiativ 		& 4 		& 10			& 27		& 14		& 			& 57,0\%		& 75,0\% 	& 41,9\%\\
-Stetig 			& 0 		& 0 			& 0 		& 3 		& 			& 100\%	   	& 16,7\% 	& 20,9\%\\
+Dominant 		& 14		& 3 			& 8 		& 1 		&       	& 0,538 	& 0,778 	& 0,636\\
+Gewissenhaft 	& 0 		& 1 			& 1 		& 0 		& 			& 0,500 	& 0,071 	& 0,163\\
+Initiativ 		& 4 		& 10			& 27		& 14		& 			& 0,570		& 0,750 	& 0,419\\
+Stetig 			& 0 		& 0 			& 0 		& 3 		& 			& 1,000	   	& 0,167 	& 0,209\\
 \hline
-Total 			& 			& 				& 			& 			& 52,33\%	& 63,2\%		& 44,1\%  	& 41,0\%\\
+Total 			& 			& 				& 			& 			& 0,5233	& 0,632		& 0,441  	& 0,410\\
 \hline
 \end{tabular}
 \end{center}
 \end{frame}
 %<-------------Folie--------->
 \begin{frame}
-\frametitle{Resultate Support Vector Machine}
+\frametitle{Analysemethoden}
+\framesubtitle{Support Vector Machine}
 \begin{center}
-Support Vector Machine, \texttt{Python}, Wortvorkommen mind. 20 mal,\\
+Resultate Support Vector Machine, \texttt{Python}, Wortvorkommen $\geq$ 20,\\
 Sigmoid Kern, Porter-Stemmer aus \texttt{nltk}, Englisch
 
 \bigskip
@@ -66,12 +68,12 @@ Sigmoid Kern, Porter-Stemmer aus \texttt{nltk}, Englisch
 \hline
 				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
 \hline
-Dominant 		& 14		& 2 			& 9 		& 1 		&       	& 54\%	 	& 78\%	 	& 64\%\\
-Gewissenhaft 	& 0 		& 5 			& 4 		& 1 		& 			& 50\%	 	& 36\%	 	& 42\%\\
-Initiativ 		& 3 		& 5				& 19		& 13		& 			& 47\%		& 53\%	 	& 50\%\\
-Stetig 			& 1 		& 2 			& 4 		& 3 		& 			& 30\%	   	& 17\%	 	& 21\%\\
+Dominant 		& 14		& 2 			& 9 		& 1 		&       	& 0,54	 	& 0,78	 	& 0,64\\
+Gewissenhaft 	& 0 		& 5 			& 4 		& 1 		& 			& 0,50	 	& 0,36	 	& 0,42\\
+Initiativ 		& 3 		& 5				& 19		& 13		& 			& 0,47		& 0,53	 	& 0,50\\
+Stetig 			& 1 		& 2 			& 4 		& 3 		& 			& 0,30	   	& 0,17	 	& 0,21\\
 \hline
-Total 			& 			& 				& 			& 			& 47,7\%		& 45\%		& 46\%  	& 44\%\\
+Total 			& 			& 				& 			& 			& 0,477		& 0,45		& 0,46  	& 0,44\\
 \hline
 \end{tabular}
 \end{center}
