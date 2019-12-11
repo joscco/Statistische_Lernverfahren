@@ -14,9 +14,12 @@ die Zeilen der DTM entsprechen unserem $x$
 \end{frame}
 
 \begin{frame}
+\frametitle{Analysemethoden}
+\framesubtitle{Lineare Modelle}
+\begin{center}
 Lineares Modell, \texttt{R}, Wortaufkommen $\geq$ 20\\
 %Mit einem linearen Modell und der Typisierung in dominant gewissenhaft initiativ oder stetig als zusätzlichen Prädiktor lässt sich nicht zuverlässig klassifizieren:\\
-\vspace{12pt}
+\bigskip
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
 				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
@@ -29,13 +32,16 @@ Stetig 			& 1 	& 3 & 1 & 2 & 		& 0,286	& 0,111 	& 0,160\\
 Total 			& 		& 	& 	& 	& 0,337	& 0,328 & 0,346  	& 0,310\\
 \hline
 \end{tabular}
+\end{center}
 \end{frame}
 
 \begin{frame}
-Lineares Modell, \texttt{R}, Wortaufkommen $\geq$ 20\\
-%Mit linearen Modellen und jeweils nur der Klassifizierung nach extro-/introvertiert bzw. emotional/rational als zusätzlichen Prädiktor lässt sich jeweils zuverlässig klassifizieren:\\
-\vspace{12pt}
+\frametitle{Analysemethoden}
+\framesubtitle{Lineare Modelle}
 \begin{center}
+Lineare Modelle, \texttt{R}, Wortaufkommen $\geq$ 20\\
+%Mit linearen Modellen und jeweils nur der Klassifizierung nach extro-/introvertiert bzw. emotional/rational als zusätzlichen Prädiktor lässt sich jeweils zuverlässig klassifizieren:\\
+\bigskip
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
 				& emotional 	& rational	&  Acc.	& Prec. & Recall	& F1\\
@@ -49,6 +55,7 @@ Total 			& 				& 			& 0,686	& 0,343	& 0,350  	& 0,340\\
 \end{center}
 
 \begin{center}
+\bigskip
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
 				& extro. 	& intro.	&  Acc.	& Prec. 	& Recall	& F1\\
@@ -59,18 +66,21 @@ introvertiert 	& 11 		& 12		& 		& 0,522 	& 0,375 	& 0,436\\
 Total 			& 			& 			& 0,640	& 0,301		& 0,293  	& 0,293\\
 \hline
 \end{tabular}
- \end{center}
+\end{center}
 
- \vspace{12pt}
+\vspace{12pt}
  
  Idee:\\
  Nutze die Vorhersage dieses Modells, um ein neues Modell anzupassen. 
  \end{frame}
 
 \begin{frame}
+\frametitle{Analysemethoden}
+\framesubtitle{Lineare Modelle}
+\begin{center}
 Modifiziertes Modell aus beiden vorherigen linearen Modellen, \texttt{R}, Wortaufkommen $\geq$ 20\\
 %Mit der Kombination aus den beiden vorherigen linearen Modellen (also unter separater Betrachtung der Klassifizierungen nach extro-/introvertiert und emotional/rational) lässt sich zuverlässiger klassifizieren:\\
-\vspace{12pt}
+\bigskip
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 \hline
 				& D 	& G	& I & S	& Acc.	& Prec. & Recall	& F1\\
@@ -83,6 +93,7 @@ Stetig 			& 1 	& 2 & 4	& 4 & 		& 0,364	& 0,222 	& 0,276\\
 Total 			& 		& 	& 	& 	& 0,442	& 0,425 & 0,437	  	& 0,415\\
 \hline
 \end{tabular}
+\end{center}
  \vspace{12pt}
  
 Das modifizierte Modell liefert eine höhere Zuverlässigkeit.
