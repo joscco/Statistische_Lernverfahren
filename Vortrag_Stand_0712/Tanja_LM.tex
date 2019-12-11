@@ -4,7 +4,7 @@
 \frametitle{Analysemethoden}
 \framesubtitle{Lineare Modelle}
 \begin{itemize}\itemsep12pt
-\item Idee: Vorhersagen der Label in Form eines linearen Zusammenhangs 
+\item Idee: Vorhersagen der Labels in Form eines linearen Zusammenhangs 
 \begin{align*}
 y=\beta^T\cdot x+\epsilon
 \end{align*}
@@ -15,8 +15,9 @@ die Zeilen der DTM entsprechen unserem $x$
 \end{frame}
 
 \begin{frame}
-\frametitle{Resultate lineare Modelle}
-Lineares Modell in \texttt{R} mit Wortvorkommen in mind. 20 Texten\\
+\section{Analysemethoden}
+\subsection{Lineare Modelle}
+Lineares Modell, \texttt{R}, Wortaufkommen $\geq$ 20\\
 %Mit einem linearen Modell und der Typisierung in dominant gewissenhaft initiativ oder stetig als zusätzlichen Prädiktor lässt sich nicht zuverlässig klassifizieren:\\
 \vspace{12pt}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -34,8 +35,9 @@ Total 			& 		& 	& 	& 	& 0,337	& 0,328 & 0,346  	& 0,310\\
 \end{frame}
 
 \begin{frame}
- \frametitle{Resultate lineare Modelle}
-Lineares Modell in \texttt{R} mit Wortvorkommen in mind. 20 Texten\\
+\section{Analysemethoden}
+\subsection{Lineare Modelle}
+Lineares Modell, \texttt{R}, Wortaufkommen $\geq$ 20\\
 %Mit linearen Modellen und jeweils nur der Klassifizierung nach extro-/introvertiert bzw. emotional/rational als zusätzlichen Prädiktor lässt sich jeweils zuverlässig klassifizieren:\\
 \vspace{12pt}
 \begin{center}
@@ -67,12 +69,13 @@ Total 			& 			& 			& 0,640	& 0,301		& 0,293  	& 0,293\\
  \vspace{12pt}
  
  Idee:\\
- Nutze die Vorhersage dieses Modells um ein neues Modell anzupassen. 
+ Nutze die Vorhersage dieses Modells, um ein neues Modell anzupassen. 
  \end{frame}
 
 \begin{frame}
- \frametitle{Resultate lineare Modelle}
-Modifiziertes Modell aus beiden vorherigen linearen Modellen in \texttt{R} mit Wortvorkommen in mind. 20 Texten\\
+\section{Analysemethoden}
+\subsection{Lineare Modelle}
+Modifiziertes Modell aus beiden vorherigen linearen Modellen, \texttt{R}, Wortaufkommen $\geq$ 20\\
 %Mit der Kombination aus den beiden vorherigen linearen Modellen (also unter separater Betrachtung der Klassifizierungen nach extro-/introvertiert und emotional/rational) lässt sich zuverlässiger klassifizieren:\\
 \vspace{12pt}
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
