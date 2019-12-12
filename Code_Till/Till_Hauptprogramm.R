@@ -13,7 +13,7 @@ reviews_preprocessed$count = rep(1, nrow(reviews_preprocessed))
   reviews_preprocessed$Lemma = tolower(reviews_preprocessed$Lemma)
   dict_lemma = reviews_preprocessed[c('ID','Lemma')] %>% group_by(ID, Lemma)
   dict_lemma = dict_lemma %>% group_by(Lemma) %>% count()
-    ind_lemma = dict_lemma$n > 9
+    ind_lemma = dict_lemma$n > 19
     dict_lemma = dict_lemma[ind_lemma,]
   # Wortart
   dict_pos = reviews_preprocessed %>% group_by(Wortart) %>% count()
@@ -48,9 +48,9 @@ reviews_preprocessed$count = rep(1, nrow(reviews_preprocessed))
     reviews$ID = 1:nrow(reviews)
       # Typenbeschreibung
       typen=data.frame('type' = c('Gewissenhaft','Initiativ','Stetig','Dominant'),
-                       'emotional' = c(1,1,-1,-1), 'introvertiert' = c(1,-1,1,-1),
+                       'emotional' = c(-1,1,1,-1), 'introvertiert' = c(1,-1,1,-1),
                        'g' = c(1,-1,-1,-1), 'i' = c(-1,1,-1,-1), 's' = c(-1,-1,1,-1), 'd' = c(-1,-1,-1,1),
-                       'type_num' = c(1,2,3,4))  
+                       'type_num' = c(2,1,4,3))  
   
 dtmatrix = reviews_preprocessed[c('ID','Lemma','count')] %>%
   cast_dtm(ID,Lemma,count)
@@ -103,7 +103,7 @@ if (PCA){
   X = t(t(X)-colMeans(X))
   Cov=cov(X)
   eig = eigen(Cov)
-  blubb = as.matrix(X) %*% as.matrix(eig$vectors[,1:30])
+  blubb = as.matrix(X) %*% as.matrix(eig$vectors[,1:150])
   bla = data.frame(blubb)
 } else {
   bla= X
@@ -145,12 +145,12 @@ nb_type = train(train_bla[,-which(names(train_bla) %in% exclude)], as.factor(tra
 nb_type_pred = predict(nb_type, test_bla)
 confusionMatrix(nb_type_pred, as.factor(test_bla$type))
 
-nb_emo = train(train_bla[,include], as.factor(train_bla$emotional), 'nb', 
+nb_emo = train(train_bla[,-which(names(train_bla) %in% exclude)], as.factor(train_bla$emotional), 'nb', 
       trControl=trainControl(method='cv', number=10))
 nb_emo_pred = predict(nb_emo, test_bla)
 confusionMatrix(nb_emo_pred, as.factor(test_bla$emotional))
 
-nb_intro = train(train_bla[,include], as.factor(train_bla$introvertiert), 'nb', 
+nb_intro = train(train_bla[,-which(names(train_bla) %in% exclude)], as.factor(train_bla$introvertiert), 'nb', 
            trControl=trainControl(method='cv', number=10))
 nb_intro_pred = predict(nb_intro, test_bla)
 confusionMatrix(nb_intro_pred, as.factor(test_bla$introvertiert))
@@ -166,7 +166,7 @@ rf_emo_pred = sign(predict(rf_emo, test_bla))
 #rf_emo_pred = inner_join(data.frame('emotional' = rf_emo_pred), typen, by='emotional')
 confusionMatrix(as.factor(rf_emo_pred), as.factor(test_bla$emotional))
 
-rf_intro = randomForest(x=train_bla[,-which(names(train_bla) %in% exclude)], y = train_bla$introvertiert, ntree = 1000)
+rf_intro = randomForest(x=train_bla[,-which(names(train_bla) %in% exclude)], y = train_bla$introvertiert, ntree = 2000)
 rf_intro_pred = sign(predict(rf_intro, test_bla))
 confusionMatrix(as.factor(rf_intro_pred), as.factor(test_bla$introvertiert))
 
@@ -183,11 +183,11 @@ confusionMatrix(lm_bla_type_pred$type, test_bla$type)
 
 
 
-lm_bla_emo = lm(emotional ~ ., data = train_bla[-which(train_bla$ID %in% c(10)),-which(names(train_bla) %in% exclude_e)])
+lm_bla_emo = lm(emotional ~ ., data = train_bla[-which(train_bla$ID %in% c(1)),-which(names(train_bla) %in% exclude_e)])
 lm_bla_emo_pred = predict(lm_bla_emo, test_bla)
 confusionMatrix(as.factor(sign(lm_bla_emo_pred)), as.factor(test_bla$emotional))
 
-lm_bla_intro = lm(introvertiert ~ X1 + X14, data = train_bla[-which(train_bla$ID %in% c(118, 49, 140, 282, 229, 238, 365, 43, 155, 323)),-which(names(train_bla) %in% exclude_i)])
+lm_bla_intro = lm(introvertiert ~ ., data = train_bla[-which(train_bla$ID %in% c(118, 49, 140, 282, 229, 238, 365, 43, 155, 323)),-which(names(train_bla) %in% exclude_i)])
 lm_bla_intro_pred = predict(lm_bla_intro, test_bla)
 confusionMatrix(as.factor(sign(lm_bla_intro_pred)), as.factor(test_bla$introvertiert))
 
@@ -219,20 +219,32 @@ confusionMatrix(rf_bla_zus_pred$type, test_bla$type)
 
 
 ####
-nb_intro = train(train1_bla[,include], as.factor(train1_bla$introvertiert), 'nb', 
+nb_intro = train(train1_bla[,-which(names(train1_bla) %in%  exclude)], as.factor(train1_bla$introvertiert), 'nb', 
                  trControl=trainControl(method='cv', number=10))
 nb_intro_pred = predict(nb_intro, test_bla)
 confusionMatrix(nb_intro_pred, as.factor(test_bla$introvertiert))
 
+
+lm_emo = lm(emotional ~ ., data = train1_bla[-which(train1_bla$ID %in% c(244, 326, 332)),-which(names(train1_bla) %in% exclude_e)])
+lm_emo_pred = predict(lm_emo, test_bla)
+confusionMatrix(as.factor(sign(lm_emo_pred)), as.factor(test_bla$emotional))
+
+
 nb_intro_pred = as.integer(predict(nb_intro, train2_bla))
+lm_emo_pred = sign(predict(lm_emo, train2_bla))
+
 train3_bla = train2_bla
 train3_bla$intro = (nb_intro_pred -2)
-rf_emo = randomForest(x=train3_bla[,-which(names(train_bla) %in% exclude)], y = train3_bla$type, ntree = 3000)
+train3_bla$emo = (lm_emo_pred +1)/2
+rf_zus = randomForest(x=train3_bla[,-which(names(train_bla) %in% exclude)], y = train3_bla$type, ntree = 3000)
+
 nb_intro_pred = as.integer(predict(nb_intro, test_bla))
+lm_emo_pred = sign(predict(lm_emo, test_bla))
 test2_bla = test_bla
 test2_bla$intro = (nb_intro_pred -2)
-rf_emo_pred = predict(rf_emo, test2_bla)
-confusionMatrix(rf_emo_pred, test_bla$type)
+test2_bla$emo = (lm_emo_pred +1)/2
+rf_zus_pred = predict(rf_zus, test2_bla)
+confusionMatrix(rf_zus_pred, test_bla$type)
 
 
 rf_type = randomForest(x=train_bla[,-which(names(train_bla) %in% exclude)], y = train_bla$type, ntree = 3000)
@@ -243,7 +255,7 @@ confusionMatrix(rf_type_pred, test_bla$type)
 #####
 library(leaps)
 library(faraway)
-lm = leaps(train_bla[,dict_pos$Wortart[-15]], train_bla$emotional)
+lm = leaps(train_bla[,-which(names(train_bla) %in% exclude)], train_bla$emotional)
 Cpplot(lm)
 
 regsubsets(train_bla[,dict_pos$Wortart], train_bla$emotional)

@@ -1,0 +1,144 @@
+%\documentclass{beamer}
+%\usepackage[utf8]{inputenc}
+% \usepackage[latin1]{inputenc} %  Alternativ unter Windows
+% \usepackage[T1]{fontenc}
+%\usepackage[ngerman]{babel}
+%\usepackage[toc,page]{appendix}
+%\usepackage{latexsym}
+%\usepackage{amsmath,amssymb,amsthm}
+%\usepackage{hyperref}
+
+%\newcommand*{\quelle}{%
+%	\footnotesize Quelle:
+%}
+
+%\useoutertheme{infolines}
+%\beamertemplatenavigationsymbolsempty
+%\setbeamertemplate{headline}{}
+
+%\title{Seminar Statistische Lernverfahren}
+%\subtitle{Klassifikation von Rezensionstypen}
+%\author[T.G., M.H., A.K., M.L., T.N., J.S.]{Till Gräfenberg, Matthias Häußler, Alexander Kohlscheen, Michael Lau, Tanja Niklas, Jonathan Schmitz}
+%\date{12. Dezember 2019}
+%\begin{document}
+%\begin{frame}
+%\thispagestyle{empty}
+
+%\titlepage
+%\end{frame}
+
+\section{Problemstellung}
+\begin{frame}
+\frametitle{Problemstellung}
+\begin{itemize}\setlength\parskip{12pt}
+\item Ziel: Klassifizierung von Reviews in folgende Typen:
+\begin{center}
+\begin{tabular}{c|c|c}
+Texttyp & introvertiert & extrovertiert \\
+\hline 
+emotional & stetig & initiativ\\
+rational & gewissenhaft & dominant
+\end{tabular}
+\end{center}
+\item Gegeben: 439 bereits klassifizierte Reviews
+\end{itemize}
+\end{frame}
+
+\section{Erstellen von Prädiktoren}
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\begin{itemize}\itemsep12pt
+\item Klassifikation sollte durch verwendete Wörter geschehen
+\item Zurückführung auf Grundwörter notwendig
+\item Benutzung verschiedener Packages in \texttt{R} bzw. \texttt{Python} ermöglichte verschiedene Verfahren
+\end{itemize}
+\end{frame}
+
+\section{Lemmatisierung und Stemming}
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Was ist Stemming?}
+\begin{itemize}\setlength\parskip{12pt}
+	\item Verfahren, mithilfe dessen man verschiedene Varianten eines Wortes auf ihren gemeinsamen Wortstamm zurückführt
+	\item Durch Abschneiden von Prä-/In- und Suffixen und Ersetzen von Umlauten, Diphtongen etc. Erzeugen von Wortstämmen
+	\item Beispiele: \\
+	gelernt $\rightarrow$ lernen; \\
+	Wohnungen $\rightarrow$ Wohnung
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Stemming}
+\begin{itemize}\itemsep12pt
+\item Eigene Implementierung nach Vorgabe von COMPEON in \texttt{R}
+\item Für Englische Sprache bereits vorgefertigte Tools z.B. 
+\begin{itemize}
+\item \texttt{porterstemmer} von \texttt{nltk} in Python
+\item \texttt{snowballstemmer} von \texttt{nltk} in Python
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Was ist Lemmatisierung?}
+\begin{itemize}
+\item Das Lemma ist im Bereich der Linguistik die Grundform eines Wortes $\rightarrow$ Wortform z.B. in einem Nachschlagewerk
+\item Zurückführung auf grammatikalische Grundformen
+\item Lemmatisierung als ein lexikonbasiertes Stemmingverfahren
+\item Auftretende Probleme des Vorgangs:
+\begin{itemize}
+\item Ambiguitäten
+\item Wahl des Lemmas eines Wortes (Verbinfinitiv vs. Nomen)
+\item Kompositazerlegung nicht eindeutig (Beispiel: Wachstube)
+\item Simplizia (Beispiel: Kreuzer, Tangente)
+\item Unregelmäßigkeit von Verben im Deutschen
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Lemmatisierung}
+\begin{itemize}\itemsep12pt
+\item Erfordert vorgefertigte Packages z.B.
+\begin{itemize}
+\item \texttt{SpaCy} in Python
+\item \texttt{nltk} in Python
+\end{itemize}
+\item Diese lieferten zusätzlich Informationen über die Wortart
+\item Auch hier für Englische Sprache ausgereifter als die deutsche Alternative
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Erstellen von Prädiktoren}
+\framesubtitle{Wortliste}
+\begin{itemize}
+\item Ausgangssituation: 439 Reviews über die Firma COMPEON 
+\item 8792 Wörter in reviews\_preprocessed (mitunter mehrfach)
+\end{itemize}
+\begin{table}
+	\centering
+		\begin{tabular}[h]{l|l}
+			cleaned\_text & preprocessed\_text \\
+			\hline
+			richtigen & richtig \\
+			\hline
+			darlehen & darleh \\
+			\hline
+			gewünschte & wunsch \\
+			\hline
+			taggenuae & taggenua \\
+			\hline
+			gegenüber & genub
+\end{tabular}
+		\item
+	\caption{Wortliste Beispiele}
+	\label{tab:WortlisteBeispiele}
+\end{table}
+\end{frame}
+
+%\end{document}
